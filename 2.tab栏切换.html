@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    li {
+        list-style: none;
+    }
+
+    .tab_head {
+        width: 500px;
+        height: 30px;
+    }
+
+    .tab_head:after {
+        content: ””;
+        display: block;
+        clear: both;
+    }
+
+    .tab_head li {
+        float: left;
+        width: 25%;
+        text-align: center;
+        background-color: #ffa400;
+        line-height: 30px;
+    }
+
+    /* 显示时候颜色 */
+    .tab_head .bg {
+        background-color: #cccccc;
+    }
+
+    img {
+        width: 500px;
+        height: 400px;
+    }
+
+    .hide {
+        display: none;
+    }
+</style>
+
+<body>
+    <ul class="tab_head">
+        <li class="bg">h5</li>
+        <li>jquery</li>
+        <li>c语言</li>
+        <li>go语言</li>
+    </ul>
+    <ul class="ul_img">
+        <li><img src="./tab1.jpg" alt=""></li>
+        <li class="hide"><img src="./tab2.jpg" alt=""></li>
+        <li class="hide"><img src="./tab3.jpg" alt=""></li>
+        <li class="hide"><img src="./tab4.jpg" alt=""></li>
+    </ul>
+</body>
+<script>
+    $(function () {
+        //  鼠标移入tab选项卡，字体颜色变灰色，其他选项卡还是橘色,对应图片显示出来
+        $('.tab_head li').mouseenter(function () {
+            $(this).addClass('bg').siblings().removeClass('bg');
+            //   获取移入选项卡的索引
+            let index = $(this).index();
+            // 找到对应图片的li元素，显示图片，兄弟li隐藏图片
+            $('.ul_img li').eq(index).removeClass('hide').siblings().addClass('hide');
+        })
+    })
+</script>
+
+</html>

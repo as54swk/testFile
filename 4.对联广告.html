@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+<style>
+    .left {
+        left: 0;
+    }
+
+    .right {
+        right: 0;
+    }
+
+    img {
+        display: none;
+        position: fixed;
+        top: 250px;
+        width: 100px;
+        height: 200px;
+    }
+    body{
+        height: 2000px;
+    }
+</style>
+
+<body>
+    <img class="left" src="./tab2.jpg" alt="">
+    <img class="right" src="./tab2.jpg" alt="">
+</body>
+<script>
+    $(function(){
+        $(window).scroll(function () {
+        //为了保证兼容性，这里取两个值，哪个有值取哪一个
+        //scrollTop就是触发滚轮事件时滚轮的高度
+        var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        if(scrollTop>=600){
+           $('img').show(1000)
+        }else{
+           $('img').hide(1000)
+        }
+        console.log("滚动距离" + scrollTop);
+    })
+    })
+
+</script>
+
+</html>

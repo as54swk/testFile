@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+<style>
+    li {
+        list-style: none;
+    }
+
+    img {
+        width: 200px;
+        height: 200px;
+        display: none;
+    }
+    .show{
+        display: block;
+    }
+</style>
+
+<body>
+    <div>
+        <h3>电影排行榜</h3>
+        <ul>
+            <li>
+                <div><span>1</span><span>电影名称</span></div>
+                <img class="show" src="./小图片.jpg" alt="">
+            </li>
+            <li>
+                <div><span>2</span><span>电影名称</span></div>
+                <img src="./小图片.jpg" alt="">
+            </li>
+            <li>
+                <div><span>3</span><span>电影名称</span> </div>
+                <img src="./小图片.jpg" alt="">
+            </li>
+            <li>
+                <div><span>4</span><span>电影名称</span></div>
+                <img src="./小图片.jpg" alt="">
+            </li>
+            <li>
+                <div><span>5</span><span>电影名称</span></div>
+                <img src="./小图片.jpg" alt="">
+            </li>
+        </ul>
+    </div>
+</body>
+<script>
+    $(function () {
+        // 方式1：使用鼠标移入移出事件实现图片显示隐藏
+        // $('li').mouseenter(function () {
+        //     // console.log($(this))
+        //     $(this).find("img").addClass('show');
+        // })
+        // // 鼠标离开图片隐藏
+        // $('li').mouseleave(function(){
+        //     $(this).find("img").removeClass('show');
+        // })
+        // 方式2：或者使用hover事件,参数1为鼠标进入事件，参数2为鼠标离开事件
+        // hover() 方法规定当鼠标指针悬停在被选元素上时要运行的两个函数。
+        $('li').hover(function(){
+            $(this).find("img").addClass('show');
+        },function(){
+            $(this).find("img").removeClass('show');
+        })
+    })
+</script>
+
+</html>

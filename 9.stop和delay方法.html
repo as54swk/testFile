@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+<style>
+    .box {
+        width: 200px;
+        height: 200px;
+        background-color: red;
+        margin-top: 5px;
+    }
+</style>
+
+<body>
+    <button>开始动画</button>
+    <button>停止动画</button>
+    <div class="box"></div>
+</body>
+<script>
+    $(function () {
+        $('button').eq(0).click(function () {
+            // $('.box').animate({ width: 500, height: 500 }, 1000).animate({width:200},1000).animate({height:200},1000);
+            $('.box').animate({ width: 500, height: 500 }, 1000).animate({width:200},1000).delay(2000).animate({height:200},1000);//延迟2秒
+
+        })
+        $('button').eq(1).click(function(){
+            // ('.box').stop(); //停止当前动画，继续执行后面的动画
+            ('.box').stop(true); //停止当前动画以及后面的动画
+
+        })
+    })
+</script>
+
+</html>

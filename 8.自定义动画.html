@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+<style>
+    .one {
+        width: 200px;
+        height: 200px;
+        background-color: blue;
+        margin-top: 5px;
+    }
+
+    .two {
+        width: 200px;
+        height: 200px;
+        background-color: red;
+        margin-top: 5px;
+    }
+</style>
+
+<body>
+    <button>操作属性</button>
+    <button>累加属性</button>
+    <button>关键字</button>
+    <div class="one"></div>
+    <div class="two"></div>
+</body>
+<script>
+    $(function () {
+        $('button').eq(0).click(function(){
+            $('.one').animate({ width: 600 }, 3000, function () { alert('自定义动画完成1') })
+            $('.two').animate({ width: 600 }, 3000,'linear', function () { alert('自定义动画完成2') })
+        })
+        $('button').eq(1).click(function(){
+            $('.one').animate({ width: '+=200' }, 1000, function () { })
+        })
+        $('button').eq(2).click(function(){
+            // $('.two').animate({ width: 'hide' }, 1000, function () { })
+            $('.two').animate({ width: 'toggle' }, 1000, function () { })
+        })
+    })
+</script>
+
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>无限循环</title>
+    <link rel="SHORTCUT ICON" href="./title.ico">
+</head>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    div {
+        width: 600px;
+        height: 160px;
+        border: 1px solid #000;
+        margin: 100px auto;
+        overflow: hidden;
+    }
+
+    ul {
+        list-style: none;
+        width: 1800px;
+        height: 160px;
+        background-color: #000;
+
+    }
+
+    ul>li {
+        float: left;
+    }
+
+    li>img {
+        width: 300px;
+        height: 160px;
+    }
+</style>
+
+<body>
+    <div>
+        <ul>
+            <li><img src="./tab1.jpg" alt=""></li>
+            <li><img src="./tab2.jpg" alt=""></li>
+            <li><img src="./tab3.jpg" alt=""></li>
+            <li><img src="./tab4.jpg" alt=""></li>
+            <li><img src="./tab1.jpg" alt=""></li>
+            <li><img src="./tab2.jpg" alt=""></li>
+        </ul>
+    </div>
+</body>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+<script>
+    $(function () {
+        //定义偏移量
+        var offset = 0;
+        // 设置定时器让图片滚动起来
+        var timer; //定时器timer只能定义一次，如果每次在函数中都重新定义了就会越来越快
+        function autoPlay() {
+            timer = setInterval(function () {
+                offset += -10;
+                if (offset <= -1200) {
+                    offset = 0;
+                }
+                $("ul").css("marginLeft", offset)
+            }, 25)
+        }
+        autoPlay()
+        $("li").hover(function () {
+            clearInterval(timer) //移入暂停滚动
+            // 给非当前选中图片添加蒙版，添加透明度
+            $(this).siblings().fadeTo(100,0.5);
+            //去除当前选中蒙版
+            $(this).fadeTo(100,1)
+        }, function () {
+            autoPlay() //移除继续滚动
+            //去除所有的蒙版,透明度为无
+            $("li").fadeTo(100,1)
+        }
+        )
+
+    })
+</script>
+
+</html>

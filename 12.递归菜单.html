@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+    let arr = [
+        { id: 1, parent: null, text: '菜单1' }, ////
+        { id: 11, parent: 1, text: '菜单1-1' },
+        { id: 111, parent: 11, text: '菜单1-1-1' },
+        { id: 112, parent: 11, text: '菜单1-1-2' },
+        { id: 12, parent: 1, text: '菜单1-2' },
+        { id: 2, parent: null, text: '菜单2' },////
+        { id: 21, parent: 2, text: '菜单2-1' },
+        { id: 22, parent: 2, text: '菜单2-2' },
+    ];
+    function getTreeList(rootList, id, list) {
+        rootList.forEach((item) => {
+            if (item.parent == id) {
+                list.push(item);
+            }
+        });
+        list.forEach((item) => {
+            item.children = [];
+            getTreeList(rootList, item.id, item.children);
+        })
+        return list;
+    }
+    let res = getTreeList(arr, null, []);
+    // console.log(JSON.stringify(res));
+    console.log(res);
+</script>
+
+</html>

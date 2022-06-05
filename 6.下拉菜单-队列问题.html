@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.5.1/jquery.js"></script>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    li {
+        list-style: none;
+        text-align: center;
+    }
+
+    .nav {
+        overflow: hidden;
+        margin: 100px 200px;
+    }
+
+    .nav>li {
+        float: left;
+        width: 100px;
+        line-height: 30px;
+        background-color: pink;
+    }
+
+    .two {
+        display: none;
+    }
+
+    .two li {
+        background-color: rgb(171, 6, 236);
+    }
+</style>
+
+<body>
+    <ul class="nav">
+        <li>一级菜单
+            <ul class="two">
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+            </ul>
+        </li>
+        <li>一级菜单
+            <ul class="two">
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+            </ul>
+        </li>
+        <li>一级菜单
+            <ul class="two">
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+                <li>二级菜单</li>
+            </ul>
+        </li>
+    </ul>
+</body>
+<script>
+    $(function () {
+        // jQuery动画有队列问题，所以建议在每个动画前面加上stop方法
+        // console.log($('.nav>li'))
+        $('.nav>li').mouseenter(function () {
+            // 鼠标移入时候展开二级菜单
+            $(this).children('.two').stop();
+            $(this).children('.two').slideDown(1000);
+        })
+        $('.nav>li').mouseleave(function () {
+            $(this).children('.two').stop();
+            // 鼠标移入时候展开二级菜单
+            $(this).children('.two').slideUp(1000);
+        })
+    })
+</script>
+
+</html>

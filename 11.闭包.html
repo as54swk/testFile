@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+// 定义：函数套函数，内部的函数可以读取外部函数的变量
+ function a(){
+     let A = '我外部函数的值'
+     return function b(){
+         console.log(A)
+     }
+ }
+ a()()
+</script>
+
+</html>
